@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PHR Link</title>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <label for="fname">X-LOCKER-ID:</label>
+    <input type="text" id="fname" name="fname" /><br /><br />
+    <label for="lname">sample:</label>
+    <input type="text" id="lname" name="lname" /><br /><br />
+    <button type="click" id="btn">Click Here</button>
+
+    <script type="text/javascript">
+    function uuidv4() {
+       return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+           );
+          }
+
+console.log(uuidv4());
+
+      $("#btn").click(function () {
+        var ajxReq = $.ajax({
+          url: "HEALTH_LOCKER_URL",
+          method: 'POST',
+		  data: '{}',
+          contentType: "application/json",
+          dataType: "json",
+          headers: {
+            TIMESTAMP: new Date().toISOString(),
+            "REQUEST-ID": uuidv4(),
+            "X-AUTH-TOKEN": "X_TOKEN",
+            "X-LOCKER-ID": document.getElementById('fname').value,
+            "X-CM-ID":  "ENV",
+            Authorization: "API_KEY",
+          },
+        });
+        ajxReq.success(function (data, status, jqXhr) {
+          console.log(data);
+        });
+        ajxReq.error(function (jqXhr, textStatus, errorMessage) {
+          console.log(errorMessage);
+        });
+      });
+    </script>
+  </body>
+</html>

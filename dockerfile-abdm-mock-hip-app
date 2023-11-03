@@ -1,0 +1,7 @@
+ENV TZ=Asia/Calcutta
+RUN mkdir /APP
+WORKDIR /APP
+COPY app-service/target/app-service-*.jar  /APP/app-service.jar
+EXPOSE 9206
+RUN chmod -R 777 /APP/*
+ENTRYPOINT ["java","-jar","/APP/app-service.jar"]

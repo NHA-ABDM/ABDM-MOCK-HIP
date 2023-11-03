@@ -1,0 +1,35 @@
+server:
+  port: ${MOCK_HIP_APP_SERVICE_PORT}
+spring:
+  application:
+    name: abdm-mock-hip
+  zipkin:
+    baseUrl: ${ZIPKIN_BASE_URL}
+    sender:
+      type: web
+    service:
+      name: ${brave.localServiceName:${spring.application.name}}
+    check-timeout: ${ZIPKIN_CHECK_TIMEOUT}
+  sleuth:
+    sampler:
+      probability: ${SLEUTH_PERCENTAGE}
+  redis:
+    server: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+    password: ${REDIS_PASSWORD}
+    timeout: ${REDIS_TIMEOUT}
+    database: ${REDIS_DATABASE}
+    validity: ${REDIS_VALIDITY}
+    validity-in-minutes: ${REDIS_VALIDITY_MIN}
+  fileName: ${BUNDLE_FILE_NAME}
+logging:
+  level:
+    root: INFO
+  pattern:
+    level: "[%X{user_name}] [%X{traceId}/%X{spanId}] %-5p [%t] %C{2} - %m%n"
+abdm:
+  hiecm:
+    base-url: ${HIECM_BASE_URL}
+    cm-id: ${X_CM_ID}
+    health-locker:
+      base-url: ${HEALTH_LOCKER_BASE_URL}

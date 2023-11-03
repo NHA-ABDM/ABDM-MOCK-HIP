@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.5</version>
+        <relativePath/>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>app-service</module>
+    </modules>
+    <groupId>in.gov.abdm</groupId>
+    <artifactId>abdm-mock-hip</artifactId>
+    <version>1.0.0</version>
+    <name>abdm-mock-hip</name>
+    <packaging>pom</packaging>
+    <description>abdm mock hip project for Spring Boot</description>
+    <properties>
+        <java.version>11</java.version>
+        <spring-cloud.version>2021.0.4</spring-cloud.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>in.gov.abdm</groupId>
+            <artifactId>abdm-error</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>in.gov.abdm</groupId>
+            <artifactId>abdm-exception</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>in.gov.abdm</groupId>
+            <artifactId>abdm-constant</artifactId>
+            <version>1.1.6</version>
+        </dependency>
+    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
